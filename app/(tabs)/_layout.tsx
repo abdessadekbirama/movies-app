@@ -1,45 +1,91 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { View, Text, ImageBackground, Image } from "react-native";
+import React from "react";
+import { Tabs } from "expo-router";
+import { images } from "@/constants/images";
+import { icons } from "@/constants/icons";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+const TabIcon = ({ focused, title, icon }: any) => {
+  if (focused) {
+    return (
+      <View className="flex flex-row gap-2 items-center justify-center  overflow-hidden min-w-[100px] bg-[#ca089d] p-4 rounded-full">
+        <Image source={icon}/>
+        <Text className="text-white">{title}</Text>
+      </View>
+    );
+  } else {
+    return (
+      <View className="flex flex-row w-full flex-1 min-w-[112px] min-h-14 justify-center items-center rounded-full overflow-hidden">
+        <Image source={icon} style={{ width: 20, height: 20 }} />
+      </View>
+    );
+  }
+};
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const _Layout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarShowLabel: false,
+        tabBarStyle:{
+          height:50,
+          backgroundColor:"#3e0230",
+          paddingTop:5,
+          borderRadius:9999,
+          overflow:'hidden',
+          marginHorizontal:10,
+          marginBottom:10
+
+        }
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: "home",
+          headerShown: false,
+          tabBarIcon({ focused }) {
+            return <TabIcon focused={focused} icon={icons.home} title="Home" />;
+          },
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="search"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "search",
+          headerShown: false,
+          tabBarIcon({ focused }) {
+            return (
+              <TabIcon focused={focused} icon={icons.search} title="Search" />
+            );
+          },
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "profile",
+          headerShown: false,
+          tabBarIcon({ focused }) {
+            return (
+              <TabIcon focused={focused} icon={icons.person} title="Profile" />
+            );
+          },
+        }}
+      />
+      <Tabs.Screen
+        name="saved"
+        options={{
+          title: "saved",
+          headerShown: false,
+          tabBarIcon({ focused }) {
+            return (
+              <TabIcon focused={focused} icon={icons.save} title="saved" />
+            );
+          },
         }}
       />
     </Tabs>
   );
-}
+};
+
+export default _Layout;
