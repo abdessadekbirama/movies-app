@@ -1,21 +1,20 @@
 import { View, Text, ImageBackground, Image } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
-import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
 
 const TabIcon = ({ focused, title, icon }: any) => {
   if (focused) {
     return (
       <View className="flex flex-row gap-2 items-center justify-center  overflow-hidden min-w-[100px] bg-[#ca089d] p-4 rounded-full">
-        <Image source={icon}/>
+        <Image source={icon} tintColor="white"/>
         <Text className="text-white">{title}</Text>
       </View>
     );
   } else {
     return (
       <View className="flex flex-row w-full flex-1 min-w-[112px] min-h-14 justify-center items-center rounded-full overflow-hidden">
-        <Image source={icon} style={{ width: 20, height: 20 }} />
+        <Image source={icon} tintColor="white" style={{ width: 20, height: 20 }} />
       </View>
     );
   }
@@ -25,6 +24,7 @@ const _Layout = () => {
   return (
     <Tabs
       screenOptions={{
+        tabBarHideOnKeyboard:true,
         tabBarShowLabel: false,
         tabBarStyle:{
           height:50,
@@ -33,10 +33,12 @@ const _Layout = () => {
           borderRadius:9999,
           overflow:'hidden',
           marginHorizontal:10,
-          marginBottom:10
+          marginBottom:10,
+          position:"absolute"
 
         }
       }}
+      
     >
       <Tabs.Screen
         name="index"

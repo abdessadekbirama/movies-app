@@ -13,6 +13,7 @@ import {
   Text,
   View,
 } from "react-native";
+import search from "./search";
 
 export default function Index() {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function Index() {
     data: movies,
     loading: moviesLoading,
     error: moviesError,
-  } = useFetch(() => fetchMovies({ query: "attack on titan" }));
+  } = useFetch(() => fetchMovies({ query: "" }));
 
   return (
     <View className="flex-1 bg-[#190123] ">
@@ -49,6 +50,8 @@ export default function Index() {
             <SearchBar
               onPress={() => router.push("/search")}
               placeholder="Search for a movie"
+              value=""
+              onChangeText={() => {}}
             />
 
             <>
