@@ -8,7 +8,7 @@ const TabIcon = ({ focused, title, icon }: any) => {
     return (
       <View className="flex flex-row gap-2 items-center justify-center  overflow-hidden min-w-[100px] bg-[#352eff] p-4 rounded-full">
         <Image source={icon} tintColor="white"/>
-        <Text className="text-white">{title}</Text>
+        <Text className="text-white">{title} updtated</Text>
       </View>
     );
   } else {
