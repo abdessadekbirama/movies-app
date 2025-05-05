@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "movie app",
-    "slug": "movie app",
+    "slug": "movieApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.abdessadekbirama.movieApp"
     },
     "web": {
       "bundler": "metro",
@@ -36,6 +37,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ba1c7e60-45e8-4d92-8021-6f715a60f4c9"
+      }
     }
   }
 }

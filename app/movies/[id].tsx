@@ -11,7 +11,7 @@ interface MovieInfoProps {
 }
 const MovieInfo = ({ label, value }: MovieInfoProps) => (
   <View className="w-full flex-col mt-2 gap-3">
-    <Text className="text-xl text-[#dfdbdb]">{label}</Text>
+    <Text className="text-xl text-[#b6b2b2]">{label}</Text>
     <Text className="text-white">{value}</Text>
   </View>
 );
