@@ -6,7 +6,7 @@ import { icons } from "@/constants/icons";
 const TabIcon = ({ focused, title, icon }: any) => {
   if (focused) {
     return (
-      <View className="flex flex-row gap-2 items-center justify-center  overflow-hidden min-w-[100px] bg-[#ca089d] p-4 rounded-full">
+      <View className="flex flex-row gap-2 items-center justify-center  overflow-hidden min-w-[100px] bg-[#352eff] p-4 rounded-full">
         <Image source={icon} tintColor="white"/>
         <Text className="text-white">{title}</Text>
       </View>
