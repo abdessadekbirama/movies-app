@@ -1,0 +1,31 @@
+name: Expo EAS Update
+
+on:
+  push:
+    branches:
+      - main  # Change this to your branch name if different
+
+jobs:
+  eas-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Authenticate with Expo
+        run: eas login --token ${{ secrets.EXPO_TOKEN }}
+
+      - name: Run EAS Update
+        run: eas update --branch main  # Replace with your branch if needed
